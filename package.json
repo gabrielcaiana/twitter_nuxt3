@@ -1,7 +1,7 @@
 {
   "private": true,
   "author": "Gabriel Caiana",
-  "description": "",
+  "description": "twitter clone with nuxt3",
   "version": "1.0.0",
   "keywords": [
     "nuxt3",
