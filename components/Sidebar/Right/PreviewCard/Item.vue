@@ -9,6 +9,6 @@ const { twitterBorderColor } = useTailwindConfig();
       twitterBorderColor,
     ]"
   >
-    item
+    <slot />
   </div>
 </template>
