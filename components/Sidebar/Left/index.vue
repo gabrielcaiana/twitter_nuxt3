@@ -1,13 +1,9 @@
-<script setup lang="ts">
-const { defaultTransition } = useTailwindConfig();
-</script>
+<script setup lang="ts"></script>
+
 <template>
   <div class="h-screen flex flex-col">
     <div
-      :class="[
-        'p-2 my-2 hover:bg-blue-50 rounded-full w-min dark:hover:bg-white/50',
-        defaultTransition,
-      ]"
+      class="p-2 my-2 hover:bg-blue-50 rounded-full w-min dark:hover:bg-white/50 transition-colors"
     >
       <nuxt-link to="/">
         <div class="w-8 h-8">
