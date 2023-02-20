@@ -11,12 +11,12 @@ datasource db {
 }
 
 model User {
-  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
   email        String
-  name         String
-  username     String @unique
+  name         String?
+  username     String  @unique
   password     String
-  profileImage String
+  profileImage String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
