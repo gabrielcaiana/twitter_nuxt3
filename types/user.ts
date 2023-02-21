@@ -3,5 +3,6 @@ export interface User {
   password: string;
   repeatPassword?: string;
   email: string;
-  name: string;
+  name?: string | null;
+  profileImage?: string | null;
 }
