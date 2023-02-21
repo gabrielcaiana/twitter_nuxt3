@@ -1,5 +1,6 @@
 import { User } from 'types/user';
 import { createUser } from '~/server/db/users';
+import { userTransformer } from '~~/server/transformers';
 
 export default defineEventHandler(async (event) => {
   const body: User = await readBody(event);
@@ -24,6 +25,6 @@ export default defineEventHandler(async (event) => {
   })) as User;
 
   return {
-    body: user,
+    body: userTransformer(user),
   };
 });
