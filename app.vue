@@ -4,6 +4,13 @@ const darkMode = ref(false);
 
 <template>
   <div :class="{ dark: darkMode }">
-    <NuxtLayout />
+    <!-- is logeed in -->
+    <NuxtLayout v-if="false">
+      <NuxtLoadingIndicator />
+      <NuxtPage />
+    </NuxtLayout>
+
+    <!-- is not logged in -->
+    <AuthPage v-else />
   </div>
 </template>
