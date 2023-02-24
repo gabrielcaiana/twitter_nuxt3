@@ -6,14 +6,17 @@ export default defineEventHandler(async (event) => {
   const body: User = await readBody(event);
 
   if (!body.username || !body.email || !body.password || !body.repeatPassword) {
-    throw createError({ statusCode: 400, statusMessage: 'fields missing' });
+    return sendError(
+      event,
+      createError({ statusCode: 400, statusMessage: 'fields missing' })
+    );
   }
 
   if (body.password !== body.repeatPassword) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: 'passwords do not match',
-    });
+    return sendError(
+      event,
+      createError({ statusCode: 400, statusMessage: 'passwords do not match' })
+    );
   }
 
   const user = (await createUser({

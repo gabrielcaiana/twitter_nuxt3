@@ -1,4 +1,5 @@
 export interface User {
+  id?: ID;
   username: string;
   password: string;
   repeatPassword?: string;
@@ -6,3 +7,5 @@ export interface User {
   name?: string | null;
   profileImage?: string | null;
 }
+
+export type ID = string;
