@@ -1,3 +1,5 @@
+export type ID = string;
+
 export interface User {
   id?: ID;
   username: string;
@@ -8,4 +10,7 @@ export interface User {
   profileImage?: string | null;
 }
 
-export type ID = string;
+export interface UserLogin {
+  username: string;
+  password: string;
+}

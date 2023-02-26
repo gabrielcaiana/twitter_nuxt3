@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import { getUserByUsername } from '~/server/db/users';
 import { generateTokens, sendRefreshToken } from '~/server/utils/jwt';
 import { userTransformer } from '~/server/transformers';
-import { createRefreshToken } from '~~/server/db/refreshTokens';
+import { createRefreshToken } from '~/server/db/refreshTokens';
 import { sendError } from 'h3';
 import { User } from '~/types/user';
 
@@ -58,7 +58,7 @@ export default defineEventHandler(async (event) => {
   });
 
   // save refresh token to cookie and add httpOnly flag
-  sendRefreshToken(event, accessToken);
+  sendRefreshToken(event, refreshToken);
 
   return {
     access_token: accessToken,
