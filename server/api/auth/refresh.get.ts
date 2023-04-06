@@ -2,7 +2,6 @@ import { sendError } from 'h3';
 import { getRefreshTokenByToken } from '~/server/db/refreshTokens';
 import { decodeRefreshToken, generateTokens } from '~/server/utils/jwt';
 import { getUserById } from '~/server/db/users';
-import { userTransformer } from '~~/server/transformers';
 
 export default defineEventHandler(async (event) => {
   // Get the refresh token from the cookie
