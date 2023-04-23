@@ -1,13 +1,31 @@
 <script setup lang="ts">
-const darkMode = ref(false);
+const darkMode = ref(false)
 
-const { useStateUser, initAuth, useStateLoading } = useAuth();
-const user = useStateUser();
-const isAuthLoading = useStateLoading();
+const { useStateUser, initAuth, useStateLoading } = useAuth()
+const user = useStateUser()
+const isAuthLoading = useStateLoading()
 
 onBeforeMount(() => {
-  initAuth();
-});
+  initAuth()
+})
+
+useHead({
+  title: 'Twitter Nuxt',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Twitter Nuxt',
+    },
+  ],
+  link: [
+    {
+      rel: 'icon',
+      type: 'image/x-svg',
+      href: '/favicon.svg',
+    },
+  ],
+})
 </script>
 
 <template>
