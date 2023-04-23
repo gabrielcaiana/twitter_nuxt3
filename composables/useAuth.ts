@@ -83,25 +83,12 @@ export default () => {
     // refreshing the token 1 minute before it expires
     let remainingTime = jwt.exp * 1000 - Date.now() - 60000;
 
-    // if remaining time is less than 0, do nothing
-    while (remainingTime > 0) {
-      await new Promise((resolve) => setTimeout(resolve, remainingTime));
-
-      // try to update the token
-      try {
-        await refreshToken();
-        break;
-      } catch (error: any) {
-        console.error(`Error updating token: ${error.message}`);
-
-        // try to update again after 30 seconds
-        await new Promise((resolve) => setTimeout(resolve, 30000));
-      }
-
-      // recalculates time remaining after token refresh attempt
-      const newJwt: JwtDecode = jwt_decode(useStateToken().value);
-      remainingTime = newJwt.exp * 1000 - Date.now() - 60000;
-    }
+    // if the token has expired, refresh it immediately
+    setTimeout(async () => {
+      await refreshToken();
+      reRefreshAccessToken();
+    }, remainingTime);
+    
   };
 
   // get user with custom useFetchApi composable

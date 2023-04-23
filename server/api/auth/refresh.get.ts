@@ -33,8 +33,13 @@ export default defineEventHandler(async (event) => {
   }
 
   // Decode the refresh token
-  const token = decodeRefreshToken(refresh_token);
-  const { userId } = token as any;
+  const token = decodeRefreshToken(refresh_token) as any;
+  let userId = ''
+
+  if(token) {
+    userId = token?.userId;
+  }
+
 
   try {
     const user = await getUserById(userId);
