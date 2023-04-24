@@ -23,7 +23,8 @@ model User {
 
   RefreshToken RefreshToken[]
 
-  Tweet Tweet[]
+  Tweet     Tweet[]
+  MediaFile MediaFile[]
 }
 
 model RefreshToken {
@@ -49,4 +50,21 @@ model Tweet {
   replyToId String? @db.ObjectId
   replyTo   Tweet?  @relation("replies", fields: [replyToId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   replies   Tweet[] @relation("replies")
+
+  MediaFile MediaFile[]
+}
+
+model MediaFile {
+  id               String @id @default(auto()) @map("_id") @db.ObjectId
+  url              String
+  providerPublicId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id])
+
+  tweetId String @db.ObjectId
+  tweet   Tweet  @relation(fields: [tweetId], references: [id])
 }
