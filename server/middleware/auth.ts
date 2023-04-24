@@ -11,7 +11,7 @@ interface Decoded {
 
 export default defineEventHandler(async (event) => {
   // Define the endpoints that will be handled by the middleware
-  const endpoints = ['/api/auth/user'];
+  const endpoints = ['/api/auth/user', '/api/user/*'];
 
   // If the request is not handled by the endpoints, skip the middleware
   const isHandled = endpoints.some((endpoint) => {
