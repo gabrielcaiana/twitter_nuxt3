@@ -1,26 +1,36 @@
 <script setup lang="ts">
-const { login } = useAuth();
+const { login } = useAuth()
 
 const data = reactive({
   username: '',
   password: '',
   loading: false,
-});
+})
 
 const handleLogin = async () => {
-  data.loading = true;
+  data.loading = true
   try {
-    await login({ username: data.username, password: data.password });
-  } catch (error) {
-    console.error(error);
+    await login({ username: data.username, password: data.password })
+  } catch (err) {
+    if (err instanceof CreateErrorImpl) {
+      throw createError({
+        statusCode: err.statusCode,
+        statusMessage: err.statusMessage,
+      })
+    } else {
+      throw err
+    }
   } finally {
-    data.loading = false;
+    data.loading = false
   }
-};
+}
 </script>
 
 <template>
-  <form @submit.prevent="handleLogin" class="pt-5 space-y-6">
+  <form
+    @submit.prevent="handleLogin"
+    class="pt-5 space-y-6"
+  >
     <UIInput
       v-model="data.username"
       label="Username"

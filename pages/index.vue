@@ -10,9 +10,7 @@ const user = useStateUser()
       title="Home"
       :loading="loading"
     >
-      This is our home page
-
-      <pre>{{ user }}</pre>
+      <TweetForm :user="user" />
     </MainSection>
   </div>
 </template>
